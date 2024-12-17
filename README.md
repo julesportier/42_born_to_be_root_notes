@@ -31,3 +31,16 @@ Notes for born_to_be_root 42 project
     - `/usr/sbin/aa-status` apparmor
     - `ss -tunlp` sockets state (open port)
     - `/usr/sbin/ufw status` firewall
+
+## Notes
+### apparmor
+- show status `/usr/sbin/aa-status`
+### hostname
+- show hostname `hostnamectl` or `hostname`
+- modifiy hostname `sudo hostnamectl set-hostname [login42]`
+### ssh
+- service status `systemctl status ssh`
+- show ssh port `ss -tnlp | grep -i ssh`
+- config files in `/etc/ssh/` in `/ssh_config` & `/sshd_config` or the same files in `*/ssh[d]_config.d/*.conf` (not erased by updates)
+- connect via ssh `ssh [login]@localhost -p 4242` (22 before configuration)
+    - configure nat port in virtualbox (host and guest ports)

@@ -14,15 +14,15 @@ Notes for born_to_be_root 42 project
 - hostname `juportie42`
 - configure sudo
     - <= 3 wrong sudo attempts
-    - display a custom message when 3rd wrong sudo password
-    - archive each sodu command in /var/log/sudo/
+    - display a custom message when wrong sudo password
+    - archive each sudo command in /var/log/sudo/
     - tty mode must be enabled
     - sudo paths must be restricted (eg. /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin)
 - users : `root`, `[42login]` (in groups `user42` `sudo`)
 - Passwords :
     - \>= 10 chars, >= 1 uppercase letter, >= 1 lowercase letter, >= 1 number, <= 3 consecutive identical characters
     - must not include name of the user
-    - \>= 7 characters different from root password
+    - \>= 7 characters different from old password
     - expires every 30 days, warning message 7 days before
     - can be modified at a minimum every 48h
 - every 10 minutes monitoring.sh display some infos on screen (pdf page 8)
@@ -31,6 +31,7 @@ Notes for born_to_be_root 42 project
     - `/usr/sbin/aa-status` apparmor
     - `ss -tunlp` sockets state (open port)
     - `/usr/sbin/ufw status` firewall
+- TODO bonuses
 
 ## Notes
 ### virtual box

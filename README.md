@@ -18,7 +18,7 @@ Notes for born_to_be_root 42 project
     - archive each sudo command in /var/log/sudo/
     - tty mode must be enabled
     - sudo paths must be restricted (eg. /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin)
-- users : `root`, `[42login]` (in groups `user42` `sudo`)
+- users : `root`, `42LOGIN` (in groups `user42` `sudo`)
 - Passwords :
     - \>= 10 chars, >= 1 uppercase letter, >= 1 lowercase letter, >= 1 number, <= 3 consecutive identical characters
     - must not include name of the user
@@ -53,7 +53,7 @@ Notes for born_to_be_root 42 project
 - install `sudo apt install ufw`
 - deny incoming connection `sudo ufw default deny incoming`
 - allow outgoing connections `sudo ufw default allow outgoing`
-- allow port `sudo ufw allow [portnumber]`
+- allow port `sudo ufw allow PORTNUMBER`
 - start ufw `sudo ufw enable` (now and at boot)
 - show all rules `sudo ufw status verbose`
 ### ssh
@@ -64,21 +64,21 @@ Notes for born_to_be_root 42 project
     - in sshd_config file
         - set `Port 4242`
         - set `PermitRootLogin no` to disable connecting as root
-- connect via ssh `ssh [login]@localhost -p 4242` (22 before configuration)
+- connect via ssh `ssh USERNAME@localhost -p 4242` (22 before configuration)
     - configure nat port in virtualbox (host and guest ports)
 ### hostname
 - show hostname `hostnamectl` or `hostname`
-- modifiy hostname `sudo hostnamectl set-hostname [login42]`
+- modifiy hostname `sudo hostnamectl set-hostname LOGIN42`
 ### users and groups
-- show user infos `id [username]`
+- show user infos `id USERNAME`
 #### users
 - [⭧ arch wiki](https://wiki.archlinux.org/title/Users_and_groups)
 - [⭧ tecmint tuto](https://www.tecmint.com/add-users-in-linux/)
 - list user `cat /etc/passwd` (ou `getent passwd`)
-- remove user, user's home and mail spool `userdel -r [username]`
+- remove user, user's home and mail spool `userdel -r USERNAME`
 - show default config `useradd -D`
-- create user (high level debian compliant command version) `adduser [username]`
-    - with the low level command `useradd [username]` & `passwd [username]`
+- create user (high level debian compliant command version) `adduser USERNAME`
+    - with the low level command `useradd USERNAME` & `passwd USERNAME`
 #### passwords
 - show passwords policy `chage -l`
 #### groups
@@ -100,4 +100,3 @@ Notes for born_to_be_root 42 project
 - `Defaults logfile=/var/log/sudo/sudo.log` change default logfile location
 - `Defaults iolog_dir=/var/log/sudo/sudo-io` change default io logfile location
 - `Defaults log_input` & `Defaults log_output` keep all inputs and outputs (even passwords !)
-

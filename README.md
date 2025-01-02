@@ -44,6 +44,10 @@ Notes for born_to_be_root 42 project
 - `sudo dpkg-reconfigure console-setup`
 ### change default editor
 - `sudo update-alternatives --config editor`
+
+### luks encryption
+- [⭧ show infos and change password](https://www.cyberciti.biz/security/how-to-change-luks-disk-encryption-passphrase-in-linux/)
+
 ### apparmor
 - [⭧ official doc](https://gitlab.com/apparmor/apparmor/-/wikis/Documentation)
 - show status `/usr/sbin/aa-status`

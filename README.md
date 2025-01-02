@@ -84,7 +84,36 @@ Notes for born_to_be_root 42 project
 - create user (high level debian compliant command version) `adduser USERNAME`
     - with the low level command `useradd USERNAME` & `passwd USERNAME`
 #### passwords
-- show passwords policy `chage -l`
+##### PAM
+- [⭧ ostechnix tuto](https://ostechnix.com/force-users-use-strong-passwords-debian-ubuntu/)
+- [⭧ ostechnix tuto](https://ostechnix.com/how-to-set-password-policies-in-linux/)
+- PAM (Pluggable Authentification Module) passwords config file is located at `/etc/pam.d/common-password`
+- `man 8 cracklib`
+- install pwquality module to set password complexity `sudo apt install libpam-pwquality`
+- make a backup before changes `sudo cp /etc/pam.d/common-password /etc/pam.d/common-password.bak`
+- add rules at the end of the line containing `pam_pwquality.so` :
+    - `minlen=10`
+    - uppercase `ucredit=-1`
+    - lowercase `lcredit=-1`
+    - digit `dcredit=-1`
+    - max consecutive characters `maxrepeat=3`
+    - don't include user login `reject_username`
+    - require minimum characters changes from old password `difok=7`
+    - apply same rules for root `enforce_for_root`
+- set password expiration period for new users :
+    ``` sh
+    sudo nvim /etc/login.defs
+    # add this lines to the file
+    PASS_MAX_DAYS   30
+    PASS_MIN_DAYS   2
+    PASS_WARN_AGE   7```
+- set password expiration period for existing users (must type each users login):
+    - max password time `sudo chage -M 30 USERNAME`
+    - min password time `sudo chage -m 2 USERNAME`
+    - warning before expiration `sudo chage -W 7 USERNAME`
+- show passwords policy `chage -l USERNAME`
+- change password `passwd`
+
 #### groups
 - [⭧ redhat blog](https://www.redhat.com/en/blog/linux-groups)
 - show groups which user belongs to `groups`

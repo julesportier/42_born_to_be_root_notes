@@ -96,7 +96,7 @@ Notes for born_to_be_root 42 project
 - `Defaults requiretty` protects running sudo from non interactive shells (eg. scripts, cron...)
 - `Defaults passwd_tries=3` only allow 3 consecutive password attempts
 - `Defaults badpass_message="[string]"` custom message for password error (`Defaults insults` for random insult message)
-- `Defaults logfile=/var/log/sudo` change default logfile location
-- `Defaults iolog_dir=/var/log/sudo` change default io logfile location
+- `Defaults logfile=/var/log/sudo/sudo.log` change default logfile location
+- `Defaults iolog_dir=/var/log/sudo/sudo-io` change default io logfile location
 - `Defaults log_input` & `Defaults log_output` keep all inputs and outputs (even passwords !)
 

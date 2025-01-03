@@ -133,3 +133,9 @@ Notes for born_to_be_root 42 project
 - `Defaults logfile=/var/log/sudo/sudo.log` change default logfile location
 - `Defaults iolog_dir=/var/log/sudo/sudo-io` change default io logfile location
 - `Defaults log_input` & `Defaults log_output` keep all inputs and outputs (even passwords !)
+### system infos bash script
+- `cd /usr/local/bin` `touch monitoring.sh`
+- [bash script](./monitoring.sh)
+- [⭧ bash cheatsheet](https://devhints.io/bash)
+- [⭧ command as function argument](https://www.baeldung.com/linux/bash-pass-function-arg)
+- [⭧ awk cheatsheet](https://quickref.me/awk.html#awk-conditions)

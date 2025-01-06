@@ -39,7 +39,7 @@ rate_disk=`df -m -t ext4 | grep / | grep -v boot | awk '{ SUM+=$5 ; I++ } END { 
 append_text_nl "${available_disk}/${total_disk}MiB (${rate_disk}%)"
 
 append_text "	#Cpu load: "
-append_text_nl "`top -b -n 1 | grep '%Cpu(s)' | awk '{ print ($2+$4+$6) }'`%"
+append_text_nl "`top -b -n 1 | awk -F , '/%Cpu\(s\)/ { ID=$4 } END { print (100-ID) }'`%"
 
 append_text "	#Last boot: "
 append_text_nl "`uptime -s`"

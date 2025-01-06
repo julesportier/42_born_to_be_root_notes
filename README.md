@@ -36,7 +36,7 @@ Notes for born_to_be_root 42 project
 ## Notes
 ### virtual box
 - create a virtual disk
-- install ditro
+- install distro
 - take fresh install snapshot for backups
 - open ssh port with NAT
 
@@ -106,7 +106,8 @@ Notes for born_to_be_root 42 project
     # add this lines to the file
     PASS_MAX_DAYS   30
     PASS_MIN_DAYS   2
-    PASS_WARN_AGE   7```
+    PASS_WARN_AGE   7
+    ```
 - set password expiration period for existing users (must type each users login):
     - max password time `sudo chage -M 30 USERNAME`
     - min password time `sudo chage -m 2 USERNAME`
@@ -135,7 +136,21 @@ Notes for born_to_be_root 42 project
 - `Defaults log_input` & `Defaults log_output` keep all inputs and outputs (even passwords !)
 ### system infos bash script
 - `cd /usr/local/bin` `touch monitoring.sh`
+- copy from local machine to vm :
+``` sh
+scp -P 4242 monitoring.sh juportie@localhost:~/monitoring.sh
+su root
+mv /home/juportie/monitoring.sh /usr/local/bin/monitoring.sh
+```
 - [bash script](./monitoring.sh)
 - [⭧ bash cheatsheet](https://devhints.io/bash)
 - [⭧ command as function argument](https://www.baeldung.com/linux/bash-pass-function-arg)
 - [⭧ awk cheatsheet](https://quickref.me/awk.html#awk-conditions)
+#### crontab
+- [⭧ linuxhandbook tuto](https://linuxhandbook.com/crontab/)
+- show crontab infos/status `crontab -l`
+- edit the table `crontab -e`
+
+### bonuses
+- [⭧ wordpress install tuto](https://linux.how2shout.com/install-wordpress-on-lighttpd-web-server-ubuntu/)
+- [⭧ wordpress install tuto](https://www.atlantic.net/dedicated-server-hosting/how-to-install-wordpress-with-lighttpd-web-server-on-ubuntu-20-04/)

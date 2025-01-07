@@ -117,7 +117,7 @@ Notes for born_to_be_root 42 project
 
 #### groups
 - [⭧ redhat blog](https://www.redhat.com/en/blog/linux-groups)
-- show groups which user belongs to `groups`
+- show groups which user belongs to `groups [username]`
 - create group `sudo groupadd [groupname]`
 - delete group `sudo groupdel [groupname]`
 - append this group to the user groups belong to `sudo usermod -aG [groupname] [username]`
@@ -149,5 +149,7 @@ in VM as root `mv /home/juportie/monitoring.sh /usr/local/bin/monitoring.sh`
 - edit the table `crontab -e`
 
 ### bonuses
-- [⭧ wordpress install tuto](https://linux.how2shout.com/install-wordpress-on-lighttpd-web-server-ubuntu/)
-- [⭧ wordpress install tuto](https://www.atlantic.net/dedicated-server-hosting/how-to-install-wordpress-with-lighttpd-web-server-on-ubuntu-20-04/)
+- [⭧ lighttpd install tuto](https://orcacore.com/install-lighttpd-web-server-debian-12/)
+- configure mariadb `sudo mariadb_secure_installation`
+- open mariadb shell `sudo mariadb -u root -p`
+- [⭧ wordpress install tuto](https://www.osradar.com/install-wordpress-with-lighttpd-debian-10/)

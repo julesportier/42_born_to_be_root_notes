@@ -135,17 +135,14 @@ Notes for born_to_be_root 42 project
 - `Defaults iolog_dir=/var/log/sudo/sudo-io` change default io logfile location
 - `Defaults log_input` & `Defaults log_output` keep all inputs and outputs (even passwords !)
 ### system infos bash script
-- `cd /usr/local/bin` `touch monitoring.sh`
+- `cd /usr/local/sbin` `touch monitoring.sh`
 - copy from local machine to vm :
-``` sh
-scp -P 4242 monitoring.sh juportie@localhost:~/monitoring.sh
-su root
-mv /home/juportie/monitoring.sh /usr/local/bin/monitoring.sh
-```
+in host machine `scp -P 4242 monitoring.sh juportie@localhost:~/monitoring.sh`
+in VM as root `mv /home/juportie/monitoring.sh /usr/local/bin/monitoring.sh`
 - [bash script](./monitoring.sh)
 - [⭧ bash cheatsheet](https://devhints.io/bash)
 - [⭧ command as function argument](https://www.baeldung.com/linux/bash-pass-function-arg)
-- [⭧ awk cheatsheet](https://quickref.me/awk.html#awk-conditions)
+- [⭧ awk cheatsheet](https://quickref.me/awk.html)
 #### crontab
 - [⭧ linuxhandbook tuto](https://linuxhandbook.com/crontab/)
 - show crontab infos/status `crontab -l`

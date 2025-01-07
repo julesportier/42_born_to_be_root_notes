@@ -31,7 +31,7 @@ append_text "	#Disk usage: "
 append_text_nl "`df -m -t ext4 | grep / | grep -v boot | awk '{ USAGE+=$3 ; TOTAL+=$2 ; I++ } END { printf "%d/%dMiB (%.2f)%%", USAGE, TOTAL, USAGE/TOTAL*100 }'`"
 
 append_text "	#Cpu load: "
-append_text_nl "`top -b -n 1 | awk -F , '/%Cpu\(s\)/ { ID=$4 } END { print (100-ID) }'`%"
+append_text_nl "`top -b -d .8 -n 5 | awk -F , '/%Cpu\(s\)/ { ID+=$4 ; RUNS++ } END { printf "%.2f%%", 100-(ID/RUNS) }'`"
 
 append_text "	#Last boot: "
 append_text_nl "`uptime -s`"

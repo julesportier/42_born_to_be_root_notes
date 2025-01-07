@@ -49,7 +49,7 @@ append_text "	#Network: "
 append_text_nl "IPv4 `hostname -I` MAC `ip link | awk '/ether/ { print $2 }'`"
 
 append_text "	#Sudo commands: "
-append_text_nl "`cat /var/log/sudo/sudo.log | grep 'COMMAND' | wc -l`"
+append_text_nl "`journalctl _COMM=sudo | grep 'COMMAND' -c`"
 
 # Show the content of the file
 wall --nobanner $file

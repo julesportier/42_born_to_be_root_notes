@@ -1,12 +1,7 @@
 #! /bin/bash
 
-# Create the file to store monitoring data
-if [[ ! -e monitoring.txt ]]; then
-        touch monitoring.txt
-fi
-file=monitoring.txt
-
 # Some utility functions to append text to file
+file=/tmp/monitoring.log
 overwrite_file() {
         echo -n "$1" > $file
 }

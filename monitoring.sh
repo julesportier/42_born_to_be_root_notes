@@ -18,7 +18,10 @@ append_text_nl() {
 }
 
 # Append infos to the file
-overwrite_file "	#Architecture: "
+overwrite_file "root talks to you on `date`:"
+append_text_nl $'\n'
+
+append_text "	#Architecture: "
 append_text_nl "`uname -a`"
 
 append_text "	#CPU physical: "
@@ -54,4 +57,4 @@ append_text "	#Sudo commands: "
 append_text_nl "`cat /var/log/sudo/sudo.log | grep 'COMMAND' | wc -l`"
 
 # Show the content of the file
-wall monitoring.txt
+wall --nobanner $file

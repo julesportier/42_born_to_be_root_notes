@@ -26,17 +26,11 @@ append_text_nl "`grep "physical id" /proc/cpuinfo | uniq | wc -l`"
 append_text "	#vCPU: "
 append_text_nl "`nproc --all`"
 
-append_text "	#Memory available: "
-available_ram=`free -m | grep "Mem" | awk '{print $7}'`
-total_ram=`free -m | grep "Mem" | awk '{print $2}'`
-rate_ram=`free | grep "Mem" | awk '{printf("%.2f"), $7/$2*100}'`
-append_text_nl "${available_ram}/${total_ram}MiB (${rate_ram}%)"
+append_text "	#Memory usage: "
+append_text_nl "`free -m | awk '/Mem/ {printf "%d/%dMiB (%.2f)%%", $3, $2, $3/$2*100}'`"
 
-append_text "	#Disk space available: "
-available_disk=`df -m -t ext4 | grep / | grep -v boot | awk '{ SUM+=$4 } END { print SUM }'`
-total_disk=`df -m -t ext4 | grep / | grep -v boot | awk '{ SUM+=$2 } END { print SUM }'`
-rate_disk=`df -m -t ext4 | grep / | grep -v boot | awk '{ SUM+=$5 ; I++ } END { printf("%.2f"), 100-(SUM/I) ; print I }'`
-append_text_nl "${available_disk}/${total_disk}MiB (${rate_disk}%)"
+append_text "	#Disk usage: "
+append_text_nl "`df -m -t ext4 | grep / | grep -v boot | awk '{ USAGE+=$3 ; TOTAL+=$2 ; I++ } END { printf "%d/%dMiB (%.2f)%%", USAGE, TOTAL, USAGE/TOTAL*100 }'`"
 
 append_text "	#Cpu load: "
 append_text_nl "`top -b -n 1 | awk -F , '/%Cpu\(s\)/ { ID=$4 } END { print (100-ID) }'`%"

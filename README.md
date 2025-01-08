@@ -51,7 +51,9 @@ Notes for born_to_be_root 42 project
 ### apparmor
 - [⭧ official doc](https://gitlab.com/apparmor/apparmor/-/wikis/Documentation)
 - show status `/usr/sbin/aa-status`
+- show logs `sudo journalctl -fx`
 - [⭧ security flaws](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-security/apparmor)
+- Mandatory Access Control based on file path (SELinux is based on inodes)
 ### ufw
 - [⭧ digitalocean tuto](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu)
 - install `sudo apt install ufw`
